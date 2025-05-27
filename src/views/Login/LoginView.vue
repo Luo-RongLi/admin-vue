@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import { useSkip } from '@/hooks'
-
-const { router } = useSkip()
-
-function login() {
-  localStorage.setItem('token', '登录')
-  router.replace({ name: 'home' })
-}
+import LeftView from '@/views/Login/components/LeftView.vue'
+import RightView from '@/views/Login/components/RightView.vue'
 </script>
 
 <template>
-  <main class="flex items-center justify-center h-screen">
-    <div class="space-y-4">
-      <div>登录页面</div>
-      <el-button @click="login">一键登录</el-button>
-    </div>
+  <main class="flex items-center justify-between gap-4 p-4 h-screen bg-image">
+    <LeftView />
+    <RightView />
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.bg-image{
+  background: url("public/images/Login/bgLogin.jpg") no-repeat;
+  background-size: cover;
+}
+</style>
