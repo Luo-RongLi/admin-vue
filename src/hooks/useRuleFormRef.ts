@@ -16,7 +16,7 @@ type ReturnRuleFormRef<T extends MaybeRef<Record<string, never> | string> = stri
    * 重置表单，重置表单后，会触发校验，校验通过后触发submit函数
    * @param carryOut 是否触发submit函数
    */
-  resetForm: (formEl: FormInstance | undefined, carryOut?: boolean) => void
+  resetForm: (carryOut?: boolean) => void
   rules: Ref<FormRules<T> | unknown>
   setRules: () => void
 }
@@ -29,12 +29,12 @@ type ruleFormRefProps<T extends Maybe = string> = {
    * submit函数，校验通过后触发
    * @param formEl
    */
-  submit: (formEl: FormInstance) => void
+  submit: () => void
   /**
    * 更新规则，返回新的规则对象
    */
   updateRules?: () => FormRules<T> | undefined
-  reset?: (formEl: FormInstance | undefined) => void
+  reset?: () => void
 }
 
 export function useRuleFormRef<T extends Maybe>({
@@ -45,12 +45,12 @@ export function useRuleFormRef<T extends Maybe>({
 }: ruleFormRefProps<T>): ReturnRuleFormRef<T> {
   const ruleFormRef = ref<FormInstance>()
   const rules = ref<FormRules<T>>(exRules ?? {})
-  const submitForm = (formEl: FormInstance | undefined) => {
-    if (!formEl) return
-    return formEl
+  const submitForm = () => {
+    if (!ruleFormRef.value) return
+    return ruleFormRef.value
       .validate((valid) => {
         if (valid) {
-          submit(formEl)
+          submit()
         } else {
           console.log('error submit!')
         }
@@ -59,13 +59,13 @@ export function useRuleFormRef<T extends Maybe>({
         console.log('error submit!', e)
       })
   }
-  const resetForm = (formEl: FormInstance | undefined, carryOut: boolean = true) => {
-    if (!formEl) return
-    reset?.(formEl)
+  const resetForm = (carryOut: boolean = true) => {
+    if (!ruleFormRef.value) return
+    reset?.()
     console.log('重置')
-    formEl.resetFields()
+    ruleFormRef.value.resetFields()
     if (carryOut) {
-      submit(formEl)
+      submit()
     }
   }
   const setRules = () => {
