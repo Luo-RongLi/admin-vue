@@ -11,7 +11,7 @@ import MainFooter from '@/Layout/components/MainFooter.vue'
       <AsideMenu />
     </el-aside>
     <el-container>
-      <el-header>
+      <el-header class="shadow-sm">
         <MainHeader />
       </el-header>
       <el-main>

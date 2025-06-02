@@ -3,8 +3,9 @@
 </script>
 
 <template>
-<div class="flex border-b">
-  Header
+<div class="flex items-center justify-between h-full">
+  <div>左边</div>
+  <div>右边</div>
 </div>
 </template>
 
