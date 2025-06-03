@@ -1,9 +1,9 @@
 import { ref, type MaybeRef, type Ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 
-type Maybe = MaybeRef<Record<string, never> | string>
+type Maybe = MaybeRef<Record<string, any> | string>
 
-type ReturnRuleFormRef<T extends MaybeRef<Record<string, never> | string> = string> = {
+type ReturnRuleFormRef<T extends MaybeRef<Record<string, any> | string> = string> = {
   /**
    * 表单规则
    */
@@ -17,7 +17,7 @@ type ReturnRuleFormRef<T extends MaybeRef<Record<string, never> | string> = stri
    * @param carryOut 是否触发submit函数
    */
   resetForm: (carryOut?: boolean) => void
-  rules: Ref<FormRules<T> | unknown>
+  rules: Ref<FormRules<T> | any>
   setRules: () => void
 }
 type ruleFormRefProps<T extends Maybe = string> = {
