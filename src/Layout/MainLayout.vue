@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AsideMenu from '@/Layout/components/AsideMenu.vue'
+import AsideMenu from '@/Layout/components/Menus/AsideMenu.vue'
 import MainHeader from '@/Layout/components/MainHeader.vue'
 import MainFooter from '@/Layout/components/MainFooter.vue'
 </script>

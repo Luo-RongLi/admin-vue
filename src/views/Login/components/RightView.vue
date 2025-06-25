@@ -7,8 +7,8 @@ type formDataType = {
   password: string;
 }
 const formData = ref<formDataType>({
-  account: '',
-  password: '',
+  account: 'admin',
+  password: 'admin',
 })
 const {router} = useSkip()
 const {ruleFormRef,submitForm,resetForm,rules} = useRuleFormRef<formDataType>({
