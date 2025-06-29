@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
-import HeaderRight from '@/Layout/components/HeaderRight.vue'
-import HeaderLeft from '@/Layout/components/HeaderLeft.vue'
+import HeaderRight from '@/layout/components/HeaderRight.vue'
+import HeaderLeft from '@/layout/components/HeaderLeft.vue'
 </script>
 
 <template>

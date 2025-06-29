@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import AsideMenu from '@/Layout/components/Menus/AsideMenu.vue'
-import MainHeader from '@/Layout/components/MainHeader.vue'
-import MainFooter from '@/Layout/components/MainFooter.vue'
+import AsideMenu from '@/layout/components/Menus/AsideMenu.vue'
+import MainHeader from '@/layout/components/MainHeader.vue'
+import MainFooter from '@/layout/components/MainFooter.vue'
 </script>
 
 <template>
