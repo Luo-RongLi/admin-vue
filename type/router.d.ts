@@ -39,7 +39,9 @@ declare module 'vue-router' {
           name?: string
           /** 进场动画 */
           enterTransition?: string
-          /** 离场动画 */
+          /**
+           *  离场动画
+           * */
           leaveTransition?: string
         }
       | string
