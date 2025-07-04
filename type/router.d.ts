@@ -39,6 +39,6 @@ declare module 'vue-router' {
       enterTransition?: string;
       /** 离场动画 */
       leaveTransition?: string;
-    };
+    }|string;
   }
 }
