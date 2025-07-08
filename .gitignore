@@ -31,3 +31,6 @@ coverage
 
 test-results/
 playwright-report/
+
+type/auto-imports.d.ts
+type/components.d.ts

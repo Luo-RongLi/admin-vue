@@ -19,7 +19,7 @@ export default defineConfig({
     tailwindcss(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
-      dts:"type/auto-imports.ds.ts"
+      dts:"type/auto-imports.d.ts"
     }),
     Components({
       // allow auto load markdown components under `./src/components/`
