@@ -8,10 +8,10 @@ import {
 
 export function useSkip<T extends  Record<any, any>>(){
   const router = useRouter();
-  const route = useRoute() as RouteLocationNormalizedLoaded & { query: T };
-  const query = route.query
-  function onSkip(to: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric){
-    router.push(to)
+  const route = useRoute() as RouteLocationNormalizedLoaded & { query?: T };
+  const query = route?.query
+  async function onSkip(to: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric){
+    return await router.push(to)
   }
   return {
     router,

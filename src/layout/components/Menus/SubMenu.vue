@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import type { MenuItemProps, SubMenuProps } from 'element-plus'
+
 import MenuItem from './MenuItem.vue'
 import { toRefs } from 'vue'
 
 type PropsType = {
-  subItem: SubMenuProps & {
-    children: MenuItemProps
-  }
+  subItem: RouteChildrenConfigsTable
   active: string
 }
 const props = defineProps<PropsType>()
@@ -14,8 +12,8 @@ const { subItem } = toRefs(props)
 </script>
 
 <template>
-  <el-sub-menu :index="subItem.index">
-    <MenuItem v-for="x in subItem.children" :key="x.name" :sub-item="x"
+  <el-sub-menu :index="subItem.name">
+    <MenuItem v-for="x in subItem.children" :key="x.name" :menu-item="x"
     ></MenuItem>
   </el-sub-menu>
 </template>

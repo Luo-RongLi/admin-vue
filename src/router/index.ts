@@ -1,4 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+  type RouteLocationNormalizedGeneric,
+  type RouteRecordNameGeneric,
+} from 'vue-router'
 import { isAuthenticated } from '@/utils'
 
 const router = createRouter({
@@ -7,21 +12,22 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: import('@/layout/MainLayout.vue'),
+      component: () => import('@/layout/MainLayout.vue'),
     },
     {
       path: '/login',
       name: 'login',
-      component: import('@/views/Login/LoginView.vue'),
+      component: () => import('@/views/Login/LoginView.vue'),
     },
   ],
 })
-
-router.beforeEach((to) => {
-  if (!isAuthenticated() && to.name !== 'login') {
+const whitelist: RouteRecordNameGeneric[] = ['login', 'register']
+router.beforeEach((to: RouteLocationNormalizedGeneric) => {
+  if (!isAuthenticated() && !whitelist.includes(to.name)) {
     return { name: 'login' }
   }
   return true
 })
+router.afterEach(() => {})
 
 export default router

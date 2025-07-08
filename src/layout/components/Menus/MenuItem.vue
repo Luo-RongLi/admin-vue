@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import type { MenuItemProps } from 'element-plus'
-
-const props = defineProps<MenuItemProps>()
+defineProps<{
+  menuItem:RouteChildrenConfigsTable
+}>()
 </script>
 
 <template>
-<el-menu-item v-bind="props">
-
+<el-menu-item :index="menuItem.name">
+  <template #title>
+    <el-icon v-if="menuItem.meta?.icon">
+      <component :is="menuItem.meta?.icon" />
+    </el-icon>
+    <span>{{ menuItem.meta?.title }}</span>
+  </template>
+  <router-link :to="menuItem.path">{{ menuItem.meta?.title }}</router-link>
 </el-menu-item>
 </template>
 
