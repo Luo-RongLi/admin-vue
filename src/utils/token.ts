@@ -1,16 +1,22 @@
 import router from '@/router'
+import Cookies from 'js-cookie'
 
+const EXPIRATION: number = 60 * 1000 * 24 * 3
 
 export function setToken(token: string) {
-  localStorage.setItem('token', token)
+  // localStorage.setItem('token', token)
+  Cookies.set('token', token, { expires: EXPIRATION })
 }
+
 export function getToken() {
-  return localStorage.getItem('token')
+  return Cookies.get('token')
 }
+
 export function clearToken() {
-  localStorage.removeItem('token')
+  Cookies.remove('token')
 }
+
 export function logout() {
   clearToken()
-  router.replace({name: 'login'})
+  router.replace({ name: 'login' }).then()
 }
