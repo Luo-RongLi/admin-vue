@@ -10,7 +10,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import tailwindcss from '@tailwindcss/vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => {
+export default defineConfig( ({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
     plugins: [
