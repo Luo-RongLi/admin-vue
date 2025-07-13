@@ -1,0 +1,25 @@
+{
+  "app": {
+    "title": "My Application",
+    "description": "This is a sample application to demonstrate localization.",
+    "welcomeMessage": "Welcome to our application!",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
+    "settings": "Settings",
+    "profile": "Profile",
+    "help": "Help",
+    "contactUs": "Contact Us",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "serverError": "Internal server error, please try again later.",
+    "unauthorized": "You are not authorized to view this page."
+  },
+  "notifications": {
+    "success": "Operation completed successfully!",
+    "failure": "An error occurred, please try again."
+  }
+}
