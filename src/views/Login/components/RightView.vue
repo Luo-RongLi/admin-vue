@@ -2,7 +2,8 @@
 import { ref } from 'vue'
 import { useRuleFormRef, useSkip } from '@/hooks'
 import { setToken } from '@/utils/token.ts'
-
+import { useI18n } from 'vue-i18n'
+const t = useI18n()
 type formDataType = {
   account: string;
   password: string;
@@ -39,7 +40,7 @@ const {ruleFormRef,submitForm,resetForm,rules} = useRuleFormRef<formDataType>({
         <el-input v-model="formData.password" type="password" placeholder="请输入密码"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button class="mx-auto w-full" native-type="submit" type="primary">{{$t('app.login')}}</el-button>
+        <el-button class="mx-auto w-full" native-type="submit" type="primary">{{t('app.login')}}</el-button>
       </el-form-item>
     </el-form>
     <div class="text-center">

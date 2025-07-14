@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import RightView from '@/views/Login/components/RightView.vue'
+
 </script>
 
 <template>
