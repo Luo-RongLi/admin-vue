@@ -4,14 +4,29 @@
     "description": "这是一个示例应用程序，用于演示本地化。",
     "welcomeMessage": "欢迎使用我们的应用程序！",
     "logout": "退出登录",
-    "login": "登录",
-    "register": "注册",
     "settings": "设置",
     "profile": "个人资料",
     "help": "帮助",
     "contactUs": "联系我们",
     "termsOfService": "服务条款",
-    "privacyPolicy": "隐私政策",
+    "privacyPolicy": "隐私政策"
+  },
+  "login":{
+    "account":"账号",
+    "password":"密码",
+    "login":"登录",
+    "title":{
+      "subtitle":"输入您的邮箱和密码来登录您的账户"
+    },
+    "register":"注册账号",
+    "placeholder":{
+      "account":"请输入用户名或者手机号",
+      "password":"请输入密码"
+    },
+    "error":{
+      "account":"请输入账号！",
+      "password":"请输入密码！"
+    }
   },
   "errors": {
     "notFound": "页面未找到",

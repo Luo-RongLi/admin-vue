@@ -28,8 +28,8 @@ const { ruleFormRef, submitForm, resetForm, rules } = useRuleFormRef<formDataTyp
 <template>
   <el-card class="w-[480px]" body-class="space-y-4">
     <div class="text-center space-y-4">
-      <h1 class="text-2xl">登录</h1>
-      <el-text>输入您的邮箱和密码来登录您的账户</el-text>
+      <h1 class="text-2xl">{{ t('login.login') }}</h1>
+      <el-text>{{ t('title.subtitle') }}</el-text>
     </div>
     <el-form
       ref="ruleFormRef"
@@ -39,20 +39,20 @@ const { ruleFormRef, submitForm, resetForm, rules } = useRuleFormRef<formDataTyp
       @submit.prevent="submitForm"
       :model="formData"
     >
-      <el-form-item label="账号" prop="account">
-        <el-input v-model="formData.account" placeholder="请输入用户名或者手机号"></el-input>
+      <el-form-item :label="t('login.account')" prop="account">
+        <el-input v-model="formData.account" :placeholder="t('login.placeholder.account')"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input v-model="formData.password" type="password" placeholder="请输入密码"></el-input>
+      <el-form-item :label="t('login.password')" prop="password">
+        <el-input v-model="formData.password" type="password" :placeholder="t('login.placeholder.password')"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button class="mx-auto w-full" native-type="submit" type="primary">{{
-          t('app.login')
+          t('login.login')
         }}</el-button>
       </el-form-item>
     </el-form>
     <div class="text-center">
-      <el-link :underline="false">注册账号</el-link>
+      <el-link :underline="false">{{ t("login.register") }}</el-link>
     </div>
   </el-card>
 </template>

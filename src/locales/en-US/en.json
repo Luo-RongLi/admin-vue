@@ -4,14 +4,30 @@
     "description": "This is a sample application to demonstrate localization.",
     "welcomeMessage": "Welcome to our application!",
     "logout": "Logout",
-    "login": "Login",
-    "register": "Register",
     "settings": "Settings",
     "profile": "Profile",
     "help": "Help",
     "contactUs": "Contact Us",
     "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "password": "password"
+  },
+  "login": {
+    "account": "Account",
+    "password": "Password",
+    "login": "Log In",
+    "title": {
+      "subtitle": "Enter your email and password to log in to your account"
+    },
+    "register": "Register Account",
+    "placeholder": {
+      "account": "Please enter your username or phone number",
+      "password": "Please enter your password"
+    },
+    "error": {
+      "account": "Please enter your account!",
+      "password": "Please enter your password!"
+    }
   },
   "errors": {
     "notFound": "Page not found",
