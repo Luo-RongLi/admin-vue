@@ -19,8 +19,8 @@ const { ruleFormRef, submitForm, resetForm, rules } = useRuleFormRef<formDataTyp
     router.replace('/')
   },
   exRules: {
-    account: { type: 'string', message: '请输入账号！！!', trigger: ['blur', 'change'] },
-    password: { type: 'string', message: '请输入密码！！!', trigger: ['blur', 'change'] },
+    account: { type: 'string', message: t('login.error.account'), trigger: ['blur', 'change'] },
+    password: { type: 'string', message: t('login.error.password'), trigger: ['blur', 'change'] },
   },
 })
 </script>

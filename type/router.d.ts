@@ -1,6 +1,11 @@
 import type { RouteComponent, RouteLocationNormalized } from 'vue-router'
 import type { FunctionalComponent } from 'vue'
 
+/**
+ * @description 路由相关类型定义
+ * @author <a href="https://github.com/pure-admin/vue-pure-admin">pure-admin</a>
+ */
+
 declare global {
   interface ToRouteType extends RouteLocationNormalized {
     meta: CustomizeRouteMeta
