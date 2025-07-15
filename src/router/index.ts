@@ -3,23 +3,29 @@ import {
   createWebHistory,
   type RouteLocationNormalizedGeneric,
   type RouteRecordNameGeneric,
+  type RouteRecordRaw,
 } from 'vue-router'
+import remaining from './modules/remaining'
 import { isAuthenticated } from '@/utils'
+// "./modules/**/*.ts",
+const modules: Record<string, any> = import.meta.glob(
+  ['./modules/**/*.ts', '!./modules/**/remaining.ts'],
+  {
+    eager: true,
+  },
+)
+
+/** 原始静态路由（未做任何处理） */
+const routes: RouteChildrenConfigsTable[] = []
+
+Object.keys(modules).forEach((key) => {
+  routes.push(modules[key].default)
+})
+const routesConcat = [...routes, ...remaining] as unknown as RouteRecordRaw[]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: () => import('@/layout/MainLayout.vue'),
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: () => import('@/views/Login/LoginView.vue'),
-    },
-  ],
+  routes: routesConcat,
 })
 const whitelist: RouteRecordNameGeneric[] = ['login', 'register']
 router.beforeEach((to: RouteLocationNormalizedGeneric) => {

@@ -29,7 +29,7 @@ const { ruleFormRef, submitForm, resetForm, rules } = useRuleFormRef<formDataTyp
   <el-card class="w-[480px]" body-class="space-y-4">
     <div class="text-center space-y-4">
       <h1 class="text-2xl">{{ t('login.login') }}</h1>
-      <el-text>{{ t('title.subtitle') }}</el-text>
+      <el-text>{{ t('login.title.subtitle') }}</el-text>
     </div>
     <el-form
       ref="ruleFormRef"

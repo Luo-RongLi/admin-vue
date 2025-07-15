@@ -30,7 +30,7 @@
   },
   "errors": {
     "notFound": "页面未找到",
-    "serverError": "内部服务器错误，请稍后再试。",
+    "serverError": "内部服务器v错误，请稍后再试。",
     "unauthorized": "您无权查看此页面。"
   },
   "notifications": {

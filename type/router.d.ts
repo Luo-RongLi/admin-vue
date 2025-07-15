@@ -111,4 +111,5 @@ declare global {
 declare module 'vue-router' {
   // eslint-disable-next-line
   interface RouteMeta extends CustomizeRouteMeta {}
+
 }
