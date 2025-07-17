@@ -21,7 +21,8 @@ const routes: RouteChildrenConfigsTable[] = []
 Object.keys(modules).forEach((key) => {
   routes.push(modules[key].default)
 })
-const routesConcat = [...routes, ...remaining] as unknown as RouteRecordRaw[]
+
+export const routesConcat = [...routes, ...remaining] as unknown as RouteRecordRaw[]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,7 +31,7 @@ const router = createRouter({
 const whitelist: RouteRecordNameGeneric[] = ['login', 'register']
 router.beforeEach((to: RouteLocationNormalizedGeneric) => {
   if (!isAuthenticated() && !whitelist.includes(to.name)) {
-    return { name: 'login' }
+    return { name: 'login' ,query: { redirect: to.fullPath } }
   }
   return true
 })

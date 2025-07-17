@@ -1,21 +1,25 @@
+import { RoutesSort } from '../sort'
+
 const homeRoutes: RouteChildrenConfigsTable = {
   path: '/',
   name: 'index',
-  component: () => import('@/layouts/MainLayout.vue'),
+  component: () => import('@/layout/MainLayout.vue'),
   meta: {
     title: '首页',
     icon: 'home',
+    sort: RoutesSort.home, // 使用 RoutesSort 枚举
   },
   children: [
-    {
-      path: 'home',
-      name: 'Home',
-      component: () => import('@/views/home/index.vue'),
-      meta: {
-        title: '首页',
-        icon: 'home',
-      },
-    },
+    // {
+    //   path: 'home',
+    //   name: 'Home',
+    //   component: () => import('@/views/home/index.vue'),
+    //   meta: {
+    //     title: '首页',
+    //     icon: 'home',
+    //     sort: RoutesSort.home, // 使用 RoutesSort 枚举
+    //   },
+    // },
   ],
 }
 
