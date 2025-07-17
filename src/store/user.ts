@@ -1,12 +1,10 @@
-
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 interface UserType {
   id: string | null
-  token: string | null,
   name: string
   email: string
-  auths: string[]
+  auth: string
 }
 export const useUserStore = defineStore(
   'user',
@@ -15,8 +13,7 @@ export const useUserStore = defineStore(
       id: null,
       name: '',
       email: '',
-      token: null,
-      auths: [],
+      auth: '',
     })
 
     function setUser(newUser: UserType) {
@@ -28,14 +25,21 @@ export const useUserStore = defineStore(
         id: null,
         name: '',
         email: '',
-        token: null,
-        auths: [],
+        auth: '',
       }
     }
 
-    return { user, setUser, clearUser }
+    // 判断角色有没有权限
+    function isAuth(auth: string | string[]): boolean {
+      if (Array.isArray(auth)) {
+        return auth.includes(user.value.auth)
+      }
+      return user.value.auth === auth
+    }
+
+    return { user, setUser, clearUser, isAuth }
   },
   {
-    persist: true
+    persist: true,
   },
 )

@@ -17,8 +17,18 @@ export interface RouteItem {
 }
 
 export const useMenuStore = defineStore('menu', () => {
+  /**
+   * @description 菜单项
+   */
   const menus = ref<MenuItem[]>([])
+  /**
+   * @description 路由项 这个接受的是一个扁平的路由数组
+   * 例如：[{ name: 'Home', path: '/home', component: 'Home.vue' }, ...]
+   */
   const routes = ref<RouteItem[]>([])
+  /**
+   * @description 当前激活的菜单
+   */
   const activeMenu = ref<string>('')
 
   function setMenus(newMenus: MenuItem[]) {
@@ -39,7 +49,7 @@ export const useMenuStore = defineStore('menu', () => {
     activeMenu,
     setMenus,
     setRoutes,
-    setActiveMenu
+    setActiveMenu,
   }
 },{
   persist:true
