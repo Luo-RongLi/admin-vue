@@ -5,3 +5,17 @@ declare module '*.vue' {
   const component: DefineComponent<object, object, any>
   export default component
 }
+
+declare module '*.tsx' {
+  import type { DefineComponent } from 'vue'
+
+  const component: DefineComponent<object, object, any>
+  export default component
+}
+
+declare module '*.jsx' {
+  import type { DefineComponent } from 'vue'
+
+  const component: DefineComponent<object, object, any>
+  export default component
+}
