@@ -3,6 +3,11 @@ import { ref } from 'vue'
 import { useRuleFormRef, useSkip } from '@/hooks'
 import { setToken } from '@/utils/token.ts'
 import { useI18n } from 'vue-i18n'
+import routesArray from '@/router/router.ts'
+import { useUserStore } from '@/store/user'
+import { useMenuStore } from '@/store/menu'
+const { setUser } = useUserStore()
+const { setMenus, routes } = useMenuStore()
 const { t } = useI18n()
 type formDataType = {
   account: string
@@ -40,10 +45,17 @@ const { ruleFormRef, submitForm, resetForm, rules } = useRuleFormRef<formDataTyp
       :model="formData"
     >
       <el-form-item :label="t('login.account')" prop="account">
-        <el-input v-model="formData.account" :placeholder="t('login.placeholder.account')"></el-input>
+        <el-input
+          v-model="formData.account"
+          :placeholder="t('login.placeholder.account')"
+        ></el-input>
       </el-form-item>
       <el-form-item :label="t('login.password')" prop="password">
-        <el-input v-model="formData.password" type="password" :placeholder="t('login.placeholder.password')"></el-input>
+        <el-input
+          v-model="formData.password"
+          type="password"
+          :placeholder="t('login.placeholder.password')"
+        ></el-input>
       </el-form-item>
       <el-form-item>
         <el-button class="mx-auto w-full" native-type="submit" type="primary">{{
@@ -52,7 +64,7 @@ const { ruleFormRef, submitForm, resetForm, rules } = useRuleFormRef<formDataTyp
       </el-form-item>
     </el-form>
     <div class="text-center">
-      <el-link :underline="false">{{ t("login.register") }}</el-link>
+      <el-link :underline="false">{{ t('login.register') }}</el-link>
     </div>
   </el-card>
 </template>
