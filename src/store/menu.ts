@@ -34,6 +34,8 @@ export const useMenuStore = defineStore('menu', (): {
 
   function setRoutes(newRoutes: RouteChildrenConfigsTable[]) {
     const newRouteLevels = flattenRoutesToTwoLevels([...routesConcat,...newRoutes])
+    console.log('newRouteLevels', newRouteLevels);
+
     router.addRoute(newRouteLevels[0] as RouteRecordRaw)
     routes.value = newRouteLevels
   }

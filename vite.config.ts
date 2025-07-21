@@ -10,7 +10,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import tailwindcss from '@tailwindcss/vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
 // https://vite.dev/config/
-export default defineConfig( ({ mode }) => {
+export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
     plugins: [
@@ -56,7 +56,7 @@ export default defineConfig( ({ mode }) => {
       },
     },
     esbuild: {
-      drop: ['console'],
+      drop: mode === 'production' ? ['console'] : [],
     },
     build: {
       // 保留默认 hash 文件名机制
