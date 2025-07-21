@@ -7,7 +7,7 @@ import routesArray from '@/router/router.ts'
 import { useUserStore } from '@/store/user'
 import { useMenuStore } from '@/store/menu'
 const { setUser } = useUserStore()
-const { setMenus, routes } = useMenuStore()
+const { setMenus, setRoutes } = useMenuStore()
 const { t } = useI18n()
 type formDataType = {
   account: string
@@ -21,6 +21,14 @@ const { router } = useSkip()
 const { ruleFormRef, submitForm, resetForm, rules } = useRuleFormRef<formDataType>({
   submit: () => {
     setToken('登录')
+    setMenus(routesArray)
+    setUser({
+      id: '1',
+      auth: 'admin',
+      name: '罗',
+      email:'222'
+    })
+    setRoutes(routesArray)
     router.replace('/')
   },
   exRules: {

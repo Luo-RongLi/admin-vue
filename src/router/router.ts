@@ -6,7 +6,7 @@ const routesArray: RouteChildrenConfigsTable[] = [
     parentId: null,
     name: 'home',
     path: '/home',
-    component: 'Home/HomeView',
+    component: 'Login/LoginView',
     meta: { title: 'Home', icon: 'home' },
   },
   {
@@ -14,7 +14,7 @@ const routesArray: RouteChildrenConfigsTable[] = [
     parentId: 1,
     name: 'about',
     path: '/about',
-    component: 'Home/AboutView',
+    component: 'Login/LoginView',
     meta: { title: 'About Us', icon: 'info' },
   },
 ]

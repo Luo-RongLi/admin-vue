@@ -1,4 +1,4 @@
-import router from '@/router'
+import {router} from '@/router'
 import Cookies from 'js-cookie'
 
 // 默认三天

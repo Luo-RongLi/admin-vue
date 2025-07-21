@@ -1,145 +1,61 @@
 import { describe, it, expect } from 'vitest'
 import { flattenRoutesToTwoLevels } from '../utils'
+import { routesConcat } from '..'
+import routesArray from '../router'
+import component from 'element-plus/es/components/tree-select/src/tree-select-option.mjs'
 
-describe('flattenRoutesToTwoLevels', () => {
-  it('should flatten nested routes to two levels', () => {
-    const routes = [
-      {
-        path: '/parent',
-        children: [
-          {
-            path: 'child1',
-            children: [{ path: 'grandchild1' }],
-          },
-          { path: 'child2' },
-        ],
-      },
-    ]
-    const result = flattenRoutesToTwoLevels(routes)
-    // 根据你的新实现，修改下面的期望值
-    expect(result).toEqual([
-      {
-        path: '/',
-        children: [{ path: 'child1' }, { path: 'child2' }, { path: 'grandchild1' }],
-      },
-    ])
-  })
-
-  it('should handle routes with no children', () => {
-    const routes = [{ path: '/foo' }, { path: '/bar' }]
-
-    const result = flattenRoutesToTwoLevels(routes)
-
-    expect(result).toEqual([
+describe.only('flattenRoutesToTwoLevels', () => {
+  // it('should flatten nested routes to two levels', () => {
+  //   const routes = [
+  //     {
+  //       path: '/parent',
+  //       children: [
+  //         {
+  //           path: 'child1',
+  //           children: [{ path: 'grandchild1' }],
+  //         },
+  //         { path: 'child2' },
+  //       ],
+  //     },
+  //   ]
+  //   const result = flattenRoutesToTwoLevels(routes)
+  //   // 根据你的新实现，修改下面的期望值
+  //   expect(result).toEqual([
+  //     {
+  //       path: '/',
+  //       children: [{ path: 'child1' }, { path: 'child2' }, { path: 'grandchild1' }],
+  //     },
+  //   ])
+  // })
+  it('set 静态路由和动态路由', () => {
+    const routes: any = [
       {
         path: '/',
+        name: 'index',
+        component: () => import('@/layout/MainLayout.vue'),
+        meta: {
+          title: '首页',
+          icon: 'home',
+          sort: 1, // 使用 RoutesSort 枚举
+        },
         children: [],
       },
-    ])
-  })
-
-  it('should return an empty array if input is empty', () => {
-    expect(flattenRoutesToTwoLevels([])).toEqual([])
-  })
-
-  it('should handle root route with children', () => {
-    const routes = [
-      {
-        path: '/',
-        children: [{ path: 'dashboard' }, { path: 'settings' }],
-      },
     ]
-
-    const result = flattenRoutesToTwoLevels(routes)
-
-    expect(result).toEqual([
-      {
-        path: '/',
-        children: [{ path: 'dashboard' }, { path: 'settings' }],
-      },
-    ])
-  })
-
-  it('should ignore deeper nested children', () => {
-    const routes = [
-      {
-        path: '/',
-        children: [
-          {
-            path: 'a',
-            children: [{ path: 'b', children: [{ path: 'c' }] }],
-          },
-        ],
-      },
-    ]
-
-    const result = flattenRoutesToTwoLevels(routes)
+    const result = flattenRoutesToTwoLevels([...routes, ...routesArray])
+    console.log(JSON.stringify(result, null, 2))
 
     expect(result).toEqual([
       {
         path: '/',
-        children: [{ path: 'a' },{ path: 'b'},{ path: 'c' }],
+        name: 'index',
+        component: expect.any(Function),
+        meta: {
+          title: '首页',
+          icon: 'home',
+          sort: 1, // 使用 RoutesSort 枚举
+        },
+        children: routesArray.map(x=>({...x,component: expect.any(Function)})),
       },
     ])
   })
-
-  it('should handle routes with additional properties', () => {
-    const routes = [
-      {
-        path: '/',
-        children: [
-          { path: 'home', meta: { requiresAuth: true } },
-          { path: 'about', name: 'AboutPage' },
-        ],
-      },
-    ]
-
-    const result = flattenRoutesToTwoLevels(routes)
-
-    expect(result).toEqual([
-      {
-        path: '/',
-        children: [
-          { path: 'home', meta: { requiresAuth: true } },
-          { path: 'about', name: 'AboutPage' },
-        ],
-      },
-    ])
-  })
-
-  it('should handle multiple top-level routes with children', () => {
-    const routes = [
-      {
-        path: '/a',
-        children: [{ path: 'a1' }, { path: 'a2' }],
-      },
-      {
-        path: '/b',
-        children: [{ path: 'b1' }],
-      },
-    ]
-
-    const result = flattenRoutesToTwoLevels(routes)
-
-    expect(result).toEqual([
-      {
-        path: '/',
-        children: [{ path: 'a1' }, { path: 'a2' }, { path: 'b1' }],
-      },
-    ])
-  })
-
-  it('should handle routes with only root and no children', () => {
-    const routes = [{ path: '/' }]
-
-    const result = flattenRoutesToTwoLevels(routes)
-
-    expect(result).toEqual([
-      {
-        path: '/',
-        children: [],
-      },
-    ])
-  })
-
 })

@@ -25,11 +25,11 @@ Object.keys(modules).forEach((key) => {
   routes.push(modules[key].default)
 })
 
-export const routesConcat = flattenRoutesToTwoLevels(routes) as unknown as RouteRecordRaw[]
+const routesConcat = flattenRoutesToTwoLevels(routes)
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [...routesConcat,...remaining],
+  routes: [...routesConcat,...remaining] as RouteRecordRaw[],
 })
 
 const whitelist: RouteRecordNameGeneric[] = ['login', 'register']
@@ -44,4 +44,7 @@ router.afterEach(() => {
     NProgress.done()
 })
 
-export default router
+export {
+  routesConcat,
+  router
+}

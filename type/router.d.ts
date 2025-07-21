@@ -67,10 +67,6 @@ declare global {
    * @description 完整子路由配置表
    */
   interface RouteChildrenConfigsTable {
-    /** 路由唯一标识 `可选` */
-    id?: number | string
-    /** 父路由唯一标识 `可选` */
-    parentId?: number | string | null
     /** 子路由地址 `必填` */
     path: string
     /** 路由名字（对应不要重复，和当前组件的`name`保持一致）`必填` */
@@ -79,19 +75,25 @@ declare global {
     redirect?: string
     /** 按需加载组件 `可选` */
     component?: RouteComponent | string
-    meta?: CustomizeRouteMeta
+    meta: CustomizeRouteMeta
     /** 子路由配置项 */
     children?: Array<RouteChildrenConfigsTable>
+  }
+
+  /**
+   * @description 完整子路由配置表（包含唯一标识和父级唯一标识）
+   */
+  interface RouteConfigsTableId extends RouteChildrenConfigsTable {
+    /** 路由唯一标识 `可选` */
+    id: string
+    /** 父路由唯一标识 `可选` */
+    parentId: string | null
   }
 
   /**
    * @description 整体路由配置表（包括完整子路由）
    */
   interface RouteConfigsTable {
-    /** 路由唯一标识 `可选` */
-    id?: number | string
-    /** 父路由唯一标识 `可选` */
-    parentId?: number | string | null
     /** 路由地址 `必填` */
     path: string
     /** 路由名字（保持唯一）`可选` */
