@@ -11,7 +11,8 @@ export const useMenuStore = defineStore('menu', (): {
   activeMenu: Ref<string>,
   setMenus: (newMenus: RouteChildrenConfigsTable[]) => void,
   setRoutes: (newRoutes: RouteChildrenConfigsTable[]) => void,
-  setActiveMenu: (name: string) => void
+  setActiveMenu: (name: string) => void,
+  clear: () => void
 } => {
   /**
    * @description 菜单项
@@ -28,7 +29,7 @@ export const useMenuStore = defineStore('menu', (): {
   const activeMenu = ref<string>('')
 
   function setMenus(newMenus: RouteChildrenConfigsTable[]) {
-
+    console.log('newMenus', newMenus);
     menus.value = newMenus
   }
 
@@ -44,6 +45,13 @@ export const useMenuStore = defineStore('menu', (): {
     activeMenu.value = name
   }
 
+  // 清除菜单和路由
+  function clear() {
+    menus.value = []
+    routes.value = []
+    activeMenu.value = ''
+  }
+
   return {
     menus,
     routes,
@@ -51,6 +59,7 @@ export const useMenuStore = defineStore('menu', (): {
     setMenus,
     setRoutes,
     setActiveMenu,
+    clear
   }
 },{
   persist:true

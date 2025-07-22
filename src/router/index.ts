@@ -24,8 +24,11 @@ const routes: RouteChildrenConfigsTable[] = []
 Object.keys(modules).forEach((key) => {
   routes.push(modules[key].default)
 })
+console.log('routes', routes);
 
 const routesConcat = flattenRoutesToTwoLevels(routes)
+console.log('routesConcat', routesConcat);
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

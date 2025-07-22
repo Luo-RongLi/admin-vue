@@ -49,6 +49,7 @@ export function flattenRoutesToTwoLevels(
 
   return [root] // 返回一个包含根路由的数组
 }
+
 // 遍历后台传来的路由字符串，转换为组件对象
 export function filterAsyncRouter(asyncRouterMap: RouteChildrenConfigsTable[]): RouteChildrenConfigsTable[] {
   return asyncRouterMap.map(route => {

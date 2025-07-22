@@ -75,7 +75,7 @@ declare global {
     redirect?: string
     /** 按需加载组件 `可选` */
     component?: RouteComponent | string
-    meta: CustomizeRouteMeta
+    meta?: CustomizeRouteMeta
     /** 子路由配置项 */
     children?: Array<RouteChildrenConfigsTable>
   }
